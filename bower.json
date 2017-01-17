@@ -1,10 +1,10 @@
 {
-  "name": "pchc-gantry-child",
+  "name": "pchc-seaport2017",
   "version": "1.0.0",
   "authors": [
     "Chris Violette <cvioletterun@gmail.com>"
   ],
-  "description": "Gantry Child Theme for PCHC",
+  "description": "Gantry Child Theme for Seaport Community Health Center",
   "license": "MIT",
   "ignore": [
     "**/.*",
