@@ -1,10 +1,15 @@
-{% set twigTemplate = 'listpages.html.twig' %}
+{% set twigTemplate = 'listpages-widget.html.twig' %}
 {% set scope = 'blog' %}
 
   {# Begin Post Entries #}
+  {{widget.args.before_widget}}
+  {% if widget.instance.title is not empty %}
+    {{widget.args.before_title ~ widget.instance.title ~ widget.args.after_title}}
+  {% endif %}
   <section class="entries">
-      {% for post in posts %}
+      {% for post in childpages %}
           {% include ['partials/content-' ~ scope ~ '.html.twig', (post.format) ? 'partials/content-' ~ post.format ~ '.html.twig' : '', 'partials/content.html.twig'] %}
       {% endfor %}
   </section>
+  {{widget.args.after_widget}}
   {# End Post Entries #}
