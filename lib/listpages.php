@@ -1,5 +1,7 @@
 <?php
 namespace PCHC\ListPages;
+use Gantry;
+use Timber;
 
 if( !function_exists(__NAMESPACE__ . '\\list_child_pages') ) {
   function list_child_pages( $atts ) {
@@ -36,5 +38,5 @@ if( !function_exists(__NAMESPACE__ . '\\list_child_pages') ) {
 
   }
 
-  add_shortcode('pchc_childpages', __NAMESPACE__ . '\\pchc_list_child_pages');
+  add_shortcode('pchc_childpages', __NAMESPACE__ . '\\list_child_pages');
 }
