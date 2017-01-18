@@ -7,6 +7,7 @@
 
 $pchc_includes = [
   'lib/listpages.php',     // List pages shortcode
+  'lib/custom-posts.php',     // Custom post types
   'lib/config.php',           // Configuration
 ];
 
