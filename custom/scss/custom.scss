@@ -1,0 +1,35 @@
+// import dependencies
+@import "dependencies";
+
+// commonly used media queries
+
+//  typically min 75rem
+// @include breakpoint(large-desktop-range) {}
+
+// typically range 60rem to 74.938rem
+// @include breakpoint(desktop-range) {}
+
+// typically 48rem to 59.938rem
+// @include breakpoint(tablet-range) {}
+
+// typically 30rem to 47.938rem
+// @include breakpoint(large-mobile-range) {}
+
+// typically max 30rem
+// @include breakpoint(small-mobile-range) {}
+
+// Less commonly used media queries
+
+// typically min 60rem
+// @include breakpoint(desktop-only) {}
+
+// typically min 48rem
+// @include breakpoint(no-mobile) {}
+
+// typically max 47.938 rem
+// @include breakpoint(mobile-only) {}
+
+// typically max 59.938rem
+// @include breakpoint(no-desktop) {}
+
+// @import "nucleus/mixins/breakpoints"
