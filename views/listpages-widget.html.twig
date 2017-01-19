@@ -1,15 +1,19 @@
 {% set twigTemplate = 'listpages-widget.html.twig' %}
 {% set scope = 'blog' %}
 
-  {# Begin Post Entries #}
+{% if childpages is not empty %}
   {{widget.args.before_widget}}
-  {% if widget.instance.title is not empty %}
-    {{widget.args.before_title ~ widget.instance.title ~ widget.args.after_title}}
-  {% endif %}
-  <section class="entries">
-      {% for post in childpages %}
-          {% include ['partials/content-' ~ scope ~ '.html.twig', (post.format) ? 'partials/content-' ~ post.format ~ '.html.twig' : '', 'partials/content.html.twig'] %}
-      {% endfor %}
-  </section>
+    <div class="widgetpin">
+      {% if widget.instance.title is not empty %}
+        {{widget.args.before_title ~ widget.instance.title ~ widget.args.after_title}}
+      {% endif %}
+
+
+      <ul>
+          {% for page in childpages %}
+              <li><a class="smoothscroll" href="#post-{{page.id}}">{{page.title}}</a></li>
+          {% endfor %}
+      </ul>
+    </div>
   {{widget.args.after_widget}}
-  {# End Post Entries #}
+{% endif %}

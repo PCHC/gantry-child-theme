@@ -24,7 +24,9 @@ function query_pages( $a = array(
 
   $context['childpages'] = Timber::get_posts($args);
 
-  return $context;
+  if( !empty( $context['childpages'] ) ) {
+    return $context;
+  }
 }
 
 function shortcode__list_child_pages( $atts ) {
@@ -42,7 +44,7 @@ function shortcode__list_child_pages( $atts ) {
 
     $templates = ['listpages-shortcode.html.twig'];
 
-    Timber::render($templates, $context);
+    return Timber::compile($templates, $context);
   }
 
 }
@@ -79,7 +81,9 @@ class List_Child_Pages_Widget extends \WP_Widget {
     $context['widget']['args'] = $args;
     $context['widget']['instance'] = $instance;
     $templates = ['listpages-widget.html.twig'];
-    Timber::render($templates, $context);
+    if( !empty( $context['childpages'] ) ) {
+      Timber::render($templates, $context);
+    }
   }
 
 
