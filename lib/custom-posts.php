@@ -46,7 +46,7 @@ function seaport_staff() {
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
-		'has_archive'           => true,
+		'has_archive'           => 'staff',
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
 		'capability_type'       => 'page',
@@ -56,3 +56,16 @@ function seaport_staff() {
 
 }
 add_action( 'init', __NAMESPACE__ . '\\seaport_staff', 0 );
+
+function seaport_staff_query( $query ) {
+    if ( is_admin() || ! $query->is_main_query() )
+        return;
+
+    if ( is_post_type_archive( 'staff' ) ) {
+        // Display all posts for custom 'staff' post type
+        $query->set( 'posts_per_page', -1 );
+        $query->set( 'orderby', 'menu_order' );
+        return;
+    }
+}
+add_action( 'pre_get_posts', __NAMESPACE__ . '\\seaport_staff_query', 1 );
