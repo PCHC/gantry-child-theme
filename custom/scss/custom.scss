@@ -209,28 +209,18 @@ article {
     .post-type-archive-staff &, .tax-resident_class & {
       @include display(flex);
     	@include flex-flow(row wrap);
+      @include justify-content(space-between);
     	list-style: none;
     	margin: 0;
     	padding: 0;
     	text-rendering: optimizespeed;
 
       article {
-        @include flex(0 50 * 1%);
-        width: 50 * 1%;
-        padding: 0 1rem;
+        @include flex(0 32 * 1%);
+        //width: 33 * 1%;
         margin: 1rem 0;
-        border-right: 1px solid rgba(#000, 0.1);
         @include breakpoint(mobile-only) {
           @include flex(0 100%);
-          width: 100%;
-          padding: 0;
-          border-right: none;
-          border-bottom: 1px solid rgba(#000,0.1);
-        }
-
-        &:target {
-          @include flex(0 100%);
-          width: 100%;
         }
 
         &:nth-child(2n) {
@@ -284,6 +274,120 @@ article {
       color: #666;
       &:hover {
         color: $accent-color-1;
+      }
+    }
+  }
+}
+
+.img-effect--wrap {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+
+figure.img-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 0;
+  //min-width: 300px;
+  //max-width: 350px;
+  //max-height: 350px;
+  background: $pchc-blue;
+
+  img {
+    position: relative;
+    display: block;
+    min-height: 100%;
+    max-width: none;
+    width: calc(100% + 50px);
+    opacity: 0.8;
+    filter: grayscale(20%);
+    transform: translate3d(-40px, 0, 0);
+    transition: opacity 0.35s, transform 0.35s, filter 0.2s;
+  }
+
+  figcaption, figcaption > a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  figcaption {
+    padding: 0.5em;
+    color: #FFF;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    text-align: right;
+
+    > a {
+      z-index: 1000;
+      text-indent: 200%;
+      white-space: nowrap;
+      font-size: 0;
+      opacity: 0;
+    }
+
+    > div {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 0.5em;
+      width: 100%;
+      height: 33%;
+      transition: background 0.2s;
+    }
+  }
+
+  h2, p {
+    transform: translate3d(0,20px,0);
+    margin: 0;
+  }
+
+  h2 {
+    word-spacing: -0.1em;
+    font-size: 1.3rem;
+    font-weight: 800;
+    line-height: 1;
+    transition: transform 0.35s;
+    span {
+      font-weight: 400;
+    }
+  }
+
+  p {
+    letter-spacing: 1px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: rgba(#FFF, 0.8);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.35s;
+  }
+
+  // Start Hover Effects
+  &:hover {
+    img, h2, p {
+      transform: translate3d(0,0,0);
+    }
+
+    img, p {
+      opacity: 1;
+    }
+
+    img {
+      filter: none;
+      transform: translate3d(0,0,0) scale(1.1);
+    }
+
+    figcaption {
+      > div {
+        background: rgba(#000, 0.5);
       }
     }
   }
