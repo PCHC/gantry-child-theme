@@ -46,10 +46,6 @@ $transition-easing: cubic-bezier(0.22, 0.61, 0.36, 1);
   z-index: 2;
 }
 
-.g-owlcarousel-item-content-container {
-  width: auto;
-}
-
 .g-main-nav {
   .g-standard {
     &:hover {
@@ -77,6 +73,63 @@ $transition-easing: cubic-bezier(0.22, 0.61, 0.36, 1);
 
   }
 }
+
+// Start Owl Carousel
+#g-intro {
+  .g-owlcarousel-item-content-container {
+    width: auto;
+  }
+
+  .g-owlcarousel-item-content {
+    @include align-self(flex-end);
+    background: rgba(#000, 0.3);
+    margin: 0;
+    width: 100%;
+
+    .button {
+        padding: 0.75rem 2rem;
+        margin-bottom: 1.5rem;
+        &.button-outline {
+          color: #FFF;
+          border-color: #FFF;
+          @include transition(border $transition-timing $transition-easing, background $transition-timing $transition-easing, transform $transition-timing $transition-easing, box-shadow $transition-timing $transition-easing);
+
+          &:hover {
+            border-color: $pchc-blue;
+            color: #FFF;
+            background: $pchc-blue;
+            box-shadow: 0 15px 20px rgba(#000, 0.3);
+            @include transform(translate3d(0, -5px, 0) scale(1.05));
+          }
+        }
+    }
+  }
+
+  .g-owlcarousel-item-title {
+    font-weight: 300;
+    margin: 1rem;
+    font-size: 3rem;
+    line-height: 1.1;
+  }
+
+  .g-owlcarousel-item-desc {
+    padding-bottom: 0;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .owl-dots {
+    bottom: 0.5rem;
+    line-height: 1;
+
+    .owl-dot {
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+    }
+  }
+}
+// End Owl Carousel
 
 #g-container-main {
   .g-container {
