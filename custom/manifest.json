@@ -12,6 +12,7 @@
     }
   },
   "config": {
+    "blogID": 11,
     "devUrl": "http://localhost:8888/seaportcommunityhealthcenter.com/"
   }
 }
