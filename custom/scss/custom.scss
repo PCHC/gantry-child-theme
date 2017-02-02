@@ -205,8 +205,9 @@ article {
 }
 
 #g-mainbar {
+  // Archive entries
   .entries {
-    .post-type-archive-staff &, .tax-resident_class & {
+    .post-type-archive-staff & {
       @include display(flex);
     	@include flex-flow(row wrap);
       @include justify-content(space-between);
@@ -259,24 +260,38 @@ article {
         }
       }
     }
-  }
+  } // End archive entries
 
-  .resident-class {
-    @extend %list-reset;
-    li {
-      display: inline-block;
-      color: #CCC;
-      margin: 0;
-    }
-    a {
-      font-size: 0.8em;
-      letter-spacing: 0.1em;
-      color: #666;
-      &:hover {
-        color: $accent-color-1;
+  // Single Entries
+  .entry {
+    .type-staff {
+      .post-thumbnail {
+        .float-right, .float-left {
+          max-width: 33%;
+        }
+      }
+
+      .entry-header {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(#000,0.2);
+      }
+
+      .entry-title {
+        line-height: 1.2;
+        margin-bottom: 0.5em;
+      }
+
+      .staff-title {
+        margin-bottom: 0;
+        line-height: 1.1;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-weight: 300;
+        color: rgba(#000,0.5);
       }
     }
-  }
+  } // End single entries
 }
 
 .img-effect--wrap {
