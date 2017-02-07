@@ -466,3 +466,62 @@ figure.img-effect {
     }
   }
 }
+
+.wpfilebase-file-default {
+  background: #FFF;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0 1px 6px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08);
+  @include display(flex);
+  @include align-items(center);
+  @include transition(all $transition-timing $transition-easing);
+
+  .file-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  .file-info {
+    @include flex(1 1 auto);
+  }
+
+  .file-displayname {
+    display: block;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-bottom: 0.25rem;
+    color: $pchc-blue;
+  }
+
+  .fa {
+    color: #666;
+    @include transition(color $transition-timing $transition-easing);
+  }
+
+  .file-details {
+    line-height: 1.4;
+    font-style: italic;
+    font-size: 0.8rem;
+    color: #808080;
+    text-align: right;
+
+    &--filename {
+
+    }
+
+    &--size {
+
+    }
+  }
+
+  &:hover {
+    background: #F5F5F5;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    @include transform(scale(1.01) translate3d(0,-6px,0));
+    .fa {
+      color: $pchc-red;
+    }
+  }
+}
