@@ -1,30 +1,35 @@
-<article class="post-type-{{ post.post_type }} {{ post.class }}" id="post-{{ post.ID }}">
+<article class="post-type-{{ post.post_type }} {{ post.class }} staff-grid" id="post-{{ post.ID }}">
 
     {% block content %}
 
         {# Begin Entry Header #}
-        <section class="entry-header">
+        <a href="{{ post.link }}" class="staff-grid--link">
             {# Begin Featured Image #}
             {% if gantry.config.get('content.' ~ scope ~ '.featured-image.enabled', '1') and post.thumbnail.src %}
                 {% set position = (gantry.config.get('content.' ~ scope ~ '.featured-image.position', 'none') == 'none') ? '' : 'float-' ~ gantry.config.get('content.' ~ scope ~ '.featured-image.position', 'none') %}
-                <div class="img-effect--wrap">
-                  <figure class="img-effect">
-                    <img src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" class="featured-image tease-featured-image {{ position }}" alt="{{ post.title }}" />
-                    <figcaption>
-                      <div>
-                        <h2>{{ post.title }}{% if post.get_field('suffix') is not empty %}<span>, {{ post.get_field('suffix') }}</span>{% endif %}</h2>
-                        {% if post.get_field('title') is not empty %}
-                          <p>{{ post.get_field('title') }}</p>
-                        {% endif %}
+
+                <div class="staff-grid--item">
+                  <div class="staff-grid--img">
+                    <div class="staff-grid--img--inner">
+                      <img src="{{ post.thumbnail.src|resize(gantry.config.get('content.' ~ scope ~ '.featured-image.width', '1200'), gantry.config.get('content.' ~ scope ~ '.featured-image.height', '350')) }}" class="featured-image tease-featured-image {{ position }}" alt="{{ post.title }}" />
+                      <div class="staff-grid--img--caption">
+                        <h4 aria-hidden="true"><span>Learn More</span></h4>
                       </div>
-                      <a href="{{ post.link }}">Learn More</a>
-                    </figcaption>
-                  </figure>
+                    </div>
+                  </div>
+                  <div class="staff-grid--details">
+                    <div>
+                      <h2>{{ post.title }}{% if post.get_field('suffix') is not empty %}<span>, {{ post.get_field('suffix') }}</span>{% endif %}</h2>
+                      {% if post.get_field('title') is not empty %}
+                        <p>{{ post.get_field('title') }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
                 </div>
             {% endif %}
             {# End Featured Image #}
 
-        </section>
+        </a>
         {# End Entry Header #}
 
     {% endblock %}

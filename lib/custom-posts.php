@@ -64,7 +64,8 @@ function seaport_staff_query( $query ) {
     if ( is_post_type_archive( 'staff' ) ) {
         // Display all posts for custom 'staff' post type
         $query->set( 'posts_per_page', -1 );
-        $query->set( 'orderby', 'menu_order' );
+        $query->set( 'orderby', 'title' );
+        $query->set( 'order', 'ASC' );
         return;
     }
 }
