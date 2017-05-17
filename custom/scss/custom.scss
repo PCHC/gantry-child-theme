@@ -594,3 +594,23 @@ article {
     }
   }
 }
+
+.label {
+  display: inline;
+  padding: .2em .6em .3em;
+  font-size: 80%;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: .25em;
+
+  &.label-green {
+    background-color: #5cb85c;
+  }
+  &.label-red {
+    background-color: #d9534f;
+  }
+}

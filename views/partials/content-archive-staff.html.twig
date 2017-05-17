@@ -23,6 +23,14 @@
                       {% if post.get_field('title') is not empty %}
                         <p>{{ post.get_field('title') }}</p>
                       {% endif %}
+
+                      {% if post.get_field('staff_type') == 'medical-provider' or post.get_field('staff_type') == 'behavioral-provider' %}
+                        {% if post.get_field('open') is not empty %}
+                          <span class="label label-green">Accepting New Patients</span>
+                        {% else %}
+                          <span class="label label-red">Closed to New Patients</span>
+                        {% endif %}
+                      {% endif %}
                     </div>
                   </div>
                 </div>
