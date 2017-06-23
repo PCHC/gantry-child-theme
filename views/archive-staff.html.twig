@@ -78,7 +78,12 @@
 
               {% if posts is not empty %}
 
-                <h2>{{stafftype.title}}</h2>
+                <h3>
+                  {{stafftype.title}}
+                  {% if request.get.open is not empty %}
+                   | <span class="label label-green">Accepting New Patients</span>
+                  {% endif %}
+                </h3>
 
                   {# Begin Post Entries #}
                   <section class="entries">
