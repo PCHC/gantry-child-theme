@@ -21,37 +21,114 @@
             {% endif %}
             {# End Page Header #}
 
-            {% set stafftypes = [
+            {% set staffroles = [
               {
-                'key': 'medical-provider',
                 'title': 'Medical Providers',
+                'key': 'medical',
+                'group': [
+                  {
+                    'key': 'physicians',
+                    'title': 'Physicians',
+                  },
+                  {
+                    'key': 'nurse-practitioners',
+                    'title': 'Nurse Practitioners',
+                  },
+                  {
+                    'key': 'physical-therapists',
+                    'title': 'Physical Therapists',
+                  },
+                ],
               },
               {
-                'key': 'behavioral-provider',
-                'title': 'Behavioral Providers',
+                'title': 'Mental Health Providers',
+                'key': 'mental',
+                'group': [
+                  {
+                    'key': 'psychiatrists',
+                    'title': 'Psychiatrists',
+                  },
+                  {
+                    'key': 'social-workers',
+                    'title': 'Social Workers',
+                  },
+                ],
               },
-              {
-                'key': 'clinical-staff',
-                'title': 'Clinical Staff',
-              },
-              {
-                'key': 'administrative-staff',
-                'title': 'Administrative Staff',
-              }
-            ] %}
+            ]
+            %}
 
-            {% for stafftype in stafftypes %}
+            {% if request.get.open is empty %}
+
+              {% set staffroles = staffroles|merge([
+                {
+                  'title': 'Clinical Staff',
+                  'key': 'clinical',
+                  'group': [
+                    {
+                      'key': 'care-managers',
+                      'title': 'Care Managers',
+                    },
+                    {
+                      'key': 'clinical-support',
+                      'title': 'Clinical Support',
+                    },
+                    {
+                      'key': 'lab',
+                      'title': 'Lab',
+                    },
+                    {
+                      'key': 'medical-assistants',
+                      'title': 'Medical Assistants',
+                    },
+                    {
+                      'key': 'pharmacy',
+                      'title': 'Pharmacy',
+                    },
+                  ],
+                },
+                {
+                  'title': 'Administrative Staff',
+                  'key': 'administrative',
+                  'group': [
+                    {
+                      'key': 'leadership',
+                      'title': 'Leadership',
+                    },
+                    {
+                      'key': 'psr',
+                      'title': 'Patient Service Representatives',
+                    },
+                  ],
+                },
+              ])
+
+              %}
+
+            {% endif %}
+
+            {# Begin staff role group loop #}
+            {% for staffrolegroup in staffroles %}
+
+            <h2>
+              {{staffrolegroup.title}}
+              {% if request.get.open is not empty and (staffrolegroup.key == 'medical' or staffrolegroup.key == 'mental') %}
+               | <span class="label label-green">Accepting New Patients</span>
+              {% endif %}
+            </h2>
+
+            {# Begin staff role loop #}
+            {% for staffrole in staffrolegroup.group %}
 
               {% set query_parameters = {
                 'post_type': 'staff',
                 'posts_per_page': -1,
                 'orderby': 'title',
                 'order': 'ASC',
-                'meta_query': {
+                'tax_query': {
                   0:{
-                    'key': 'staff_type',
-                    'value': stafftype.key,
-                    'compare': '='
+                    'taxonomy': 'staff_role',
+                    'terms': staffrole.key,
+                    'field': 'slug'
                   },
                 }
               } %}
@@ -60,11 +137,6 @@
                 {% set query_parameters = query_parameters|merge({
                   'meta_query': {
                     0:{
-                      'key': 'staff_type',
-                      'value': stafftype.key,
-                      'compare': '='
-                    },
-                    1:{
                       'key': 'open',
                       'value': 1,
                       'compare': '='
@@ -79,10 +151,7 @@
               {% if posts is not empty %}
 
                 <h3>
-                  {{stafftype.title}}
-                  {% if request.get.open is not empty %}
-                   | <span class="label label-green">Accepting New Patients</span>
-                  {% endif %}
+                  {{staffrole.title}}
                 </h3>
 
                   {# Begin Post Entries #}
@@ -103,7 +172,11 @@
 
               {% endif %}
 
+              {% endfor %}
+              {# End staff role loop #}
+
             {% endfor %}
+            {# End staff role group loop #}
 
         </div>
     </div>
