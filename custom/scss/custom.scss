@@ -283,6 +283,12 @@ article {
           @include flex(0 48%);
         }
 
+        &:after {
+          height: 0;
+          width: 30%;
+          content: " ";
+        }
+
         &:nth-child(2n) {
           border-right: none;
         }
