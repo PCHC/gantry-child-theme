@@ -46,6 +46,14 @@ $transition-easing: cubic-bezier(0.22, 0.61, 0.36, 1);
   z-index: 2;
 }
 
+#g-navigation {
+  .size-25 {
+    .g-content {
+      padding: 0.938rem 0;
+    }
+  }
+}
+
 .g-main-nav {
   .g-standard {
     &:hover {
@@ -88,7 +96,7 @@ $transition-easing: cubic-bezier(0.22, 0.61, 0.36, 1);
 
   .g-owlcarousel-item-content {
     @include align-self(flex-end);
-    background: rgba(#000, 0.3);
+    background: rgba(#000, 0.7);
     margin: 0;
     width: 100%;
 
@@ -264,6 +272,7 @@ article {
 }
 
 #g-mainbar {
+  padding-top: 0;
   // Archive entries
   .entries {
     .post-type-archive-staff & {
@@ -348,7 +357,7 @@ article {
         line-height: 1.1;
         letter-spacing: 0.05em;
         text-transform: uppercase;
-        font-weight: 300;
+        font-weight: 400;
         color: rgba(#000,0.5);
       }
     }
@@ -487,13 +496,13 @@ article {
       }
     }
 
-    p {
+    &--title {
       margin-bottom: 0;
       margin-top: 0.5em;
       line-height: 1.1;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      font-weight: 300;
+      font-weight: 500;
       color: rgba(#000,0.5);
       @include transition(color 0.2s);
 
