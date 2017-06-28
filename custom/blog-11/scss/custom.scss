@@ -40,6 +40,10 @@ $transition-easing: cubic-bezier(0.22, 0.61, 0.36, 1);
 
 // @import "nucleus/mixins/breakpoints"
 
+@mixin breakpoint-tablet-desktop() {
+  @media all and (min-width: $breakpoints-tablet-container) and (max-width: $breakpoints-large-desktop-container  - 0.062rem) { @content }
+}
+
 #g-intro {
   padding: 1rem 0 2rem !important;
   position: relative;
@@ -83,6 +87,37 @@ $transition-easing: cubic-bezier(0.22, 0.61, 0.36, 1);
             font-weight: 800;
           }
         }
+      }
+    }
+  }
+}
+
+#g-navigation {
+  .schc-logo, .schc-menu {
+    @include breakpoint-tablet-desktop {
+      @include flex(0 100%);
+      width: 100%;
+      .g-content {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .schc-logo {
+    @include breakpoint-tablet-desktop {
+      .g-content {
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .schc-menu {
+    text-align: right;
+    @include breakpoint-tablet-desktop {
+      text-align: center;
+      .g-content {
+        padding: 0;
       }
     }
   }
