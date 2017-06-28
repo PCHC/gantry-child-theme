@@ -134,42 +134,94 @@ $transition-easing: cubic-bezier(0.22, 0.61, 0.36, 1);
     background: rgba(#000, 0.7);
     margin: 0;
     width: 100%;
+    padding: 0.75rem;
 
     .button {
-        padding: 0.75rem 2rem;
-        margin-bottom: 1.5rem;
-        &.button-outline {
-          color: #FFF;
-          border-color: #FFF;
-          @include transition(border $transition-timing $transition-easing, background $transition-timing $transition-easing, transform $transition-timing $transition-easing, box-shadow $transition-timing $transition-easing);
+      padding: 0.75rem 2rem;
+      margin-bottom: 1.5rem;
+      &.button-outline {
+        color: #FFF;
+        border-color: #FFF;
+        @include transition(border $transition-timing $transition-easing, background $transition-timing $transition-easing, transform $transition-timing $transition-easing, box-shadow $transition-timing $transition-easing);
 
-          &:hover {
-            border-color: $pchc-blue;
-            color: #FFF;
-            background: $pchc-blue;
-            box-shadow: 0 15px 20px rgba(#000, 0.3);
-            @include transform(translate3d(0, -5px, 0) scale(1.05));
-          }
+        &:hover {
+          border-color: $pchc-blue;
+          color: #FFF;
+          background: $pchc-blue;
+          box-shadow: 0 15px 20px rgba(#000, 0.3);
+          @include transform(translate3d(0, -5px, 0) scale(1.05));
         }
+      }
+    }
+
+    @media all and (max-width: $breakpoints-large-desktop-container - 0.062rem) {
+      @include display(flex);
+    	@include flex-flow(row wrap);
+      @include justify-content(space-around);
     }
   }
 
   .g-owlcarousel-item-title {
-    font-weight: 300;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     margin: 1rem;
     font-size: 3rem;
     line-height: 1.1;
+    margin: 0 0 0.5rem;
+    font-size: 2.5rem;
+
+    @media all and (max-width: $breakpoints-large-desktop-container - 0.062rem) {
+      @include flex(0 100%);
+    }
+
+    @include breakpoint(mobile-only) {
+      @include flex(3);
+      text-align: left;
+      font-size: 1.75rem;
+    }
   }
 
   .g-owlcarousel-item-desc {
     padding-bottom: 0;
     margin-bottom: 1rem;
     line-height: 1.2;
+    font-weight: 400;
+    font-size: 1.35rem;
+    @media all and (max-width: $breakpoints-large-desktop-container - 0.062rem) {
+      @include flex(2);
+      font-size: 1.2rem;
+    }
+    @media all and (max-width: $breakpoints-desktop-container - 0.062rem) {
+      font-size: 1.1rem;
+    }
+  }
+
+  .g-owlcarousel-item-link {
+    @media all and (max-width: $breakpoints-large-desktop-container - 0.062rem) {
+      @include flex(1);
+      margin-left: 1rem;
+      @include display(flex);
+      @include align-items(center);
+      @include justify-content(center);
+
+      .button {
+        margin-bottom: 0;
+        width: 100%;
+      }
+    }
+    @include breakpoint(mobile-only) {
+      .button {
+        display: block;
+      }
+    }
   }
 
   .owl-dots {
     bottom: 0.5rem;
     line-height: 1;
+    @include breakpoint(mobile-only) {
+      display: none !important;
+    }
 
     .owl-dot {
       width: 0.75rem;
